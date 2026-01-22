@@ -7,11 +7,21 @@ Original file is located at
     https://colab.research.google.com/drive/17p5sDw7-5Q1VFpPHmsH_36JcVH2SkWkd
 """
 
-from google.colab import files
+import streamlit as st
 import pandas as pd
 import numpy as np
 import re
 from openpyxl import load_workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
+from io import BytesIO
+import traceback
+
+# Page config
+st.set_page_config(
+    page_title="Transaction MIS Processor",
+    page_icon="📊",
+    layout="wide"
+)
 
 # ==================================================
 # ROBUST COLUMN HANDLING
