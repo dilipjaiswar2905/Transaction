@@ -25,17 +25,8 @@ st.markdown("""
     font-size: 0.95rem; 
     color: #666; 
     margin-top: 0.3rem; 
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
 }
-.timer-box {
-    text-align: right; 
-    padding: 8px 12px; 
-    background-color: #f8f9fa;
-    border-radius: 6px; 
-    border: 1px solid #dee2e6;
-}
-.timer-label {font-size: 0.75rem; color: #666; margin-bottom: 2px;}
-.timer-value {font-size: 1.2rem; font-weight: 600; color: #1f77b4;}
 .stMetric {
     background-color: #f8f9fa; 
     border: 2px solid #e1e4e8; 
@@ -63,8 +54,6 @@ def strip_time_from_dates(df):
     return df
 
 # Initialize session state
-if 'start_time' not in st.session_state:
-    st.session_state.start_time = time.time()
 if 'processed' not in st.session_state:
     st.session_state.processed = False
 if 'mis_output' not in st.session_state:
@@ -74,21 +63,8 @@ if 'master_output' not in st.session_state:
 if 'processing_stats' not in st.session_state:
     st.session_state.processing_stats = {}
 
-# Header with timer
-header_col, timer_col = st.columns([5, 1])
-with header_col:
-    st.markdown('<h1 class="main-header">📊 Transaction Processing Model</h1>', unsafe_allow_html=True)
-with timer_col:
-    timer_placeholder = st.empty()
-    elapsed = time.time() - st.session_state.start_time
-    timer_placeholder.markdown(
-        f'<div class="timer-box">'
-        f'<div class="timer-label">⏱️ Session Time</div>'
-        f'<div class="timer-value">{int(elapsed // 60)}m {int(elapsed % 60)}s</div>'
-        f'</div>', 
-        unsafe_allow_html=True
-    )
-
+# Header section - centered
+st.markdown('<h1 class="main-header">📊 Transaction Processing Model</h1>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">Upload files and process Transaction data with automated tagging and calculations</p>', unsafe_allow_html=True)
 st.divider()
 
